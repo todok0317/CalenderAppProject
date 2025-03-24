@@ -81,7 +81,7 @@ public class JdbcTemplateCalendarRepository implements CalendarRepository {
     // 선택 할 일 조회
     @Override
     public Optional<Calendar> findCalendarById(Long id) {
-        List<Calendar> result = jdbcTemplate.query("SELECT * FROM WHERE id = ?", memoRowMapperV2(), id);
+        List<Calendar> result = jdbcTemplate.query("SELECT * FROM calendar WHERE id = ?", memoRowMapperV2(), id);
         return result.stream().findAny();
     }
 

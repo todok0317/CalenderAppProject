@@ -58,7 +58,7 @@ public class CalendarServiceImpl implements CalendarService {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "비밀번호가 일치하지 않습니다.");
         }
         // 작성자와 할 일 내용이 없으면 예외를 던짐
-        if(author == null || todo != null ) {
+        if(author == null || todo == null ) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "작성자 그리고 할 일 내용이 없습니다.");
         }
         // 일정 수정

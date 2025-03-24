@@ -1,4 +1,4 @@
-package com.example.calenderappproject;
+package com.example.calendarappproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

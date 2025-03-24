@@ -15,6 +15,6 @@ public interface CalendarService {
 
     CalendarResponseDto updateCalendarById(Long id, String author, String todo, String password);
 
-
+    void deleteCalender(Long id);
 
 }

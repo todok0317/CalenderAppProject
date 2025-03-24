@@ -50,5 +50,12 @@ public class CalendarController {
 
     }
 
+    // 선택한 할 일 삭제
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCalendar(@PathVariable Long id) {
+        calendarService.deleteCalender(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

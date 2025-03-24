@@ -5,8 +5,11 @@ import com.example.calendarappproject.dto.CalendarResponseDto;
 import com.example.calendarappproject.entity.Calendar;
 import com.example.calendarappproject.repository.CalendarRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -70,6 +73,17 @@ public class CalendarServiceImpl implements CalendarService {
         // 수정 된 일정 반환
         calendar = calendarRepository.findCalendarByIdOrElseThrow(id);
         return new CalendarResponseDto(calendar);
+    }
+
+
+    // 선택한 메모 삭제
+    @Override
+    public void deleteCalender(Long id) {
+        // 할 일 삭제
+        int deleteRow = calendarRepository.deleteCalendar(id);
+        if(deleteRow == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "삭제 된 할 일이 없습니다. id = " + id);
+        }
     }
 
 

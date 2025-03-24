@@ -17,4 +17,6 @@ public interface CalendarRepository {
     Calendar findCalendarByIdOrElseThrow(Long id);
 
     int updateCalendar(Long id, String author, String todo);
+
+    int deleteCalendar(Long id);
 }

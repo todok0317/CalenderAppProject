@@ -111,7 +111,11 @@ public class JdbcTemplateCalendarRepository implements CalendarRepository {
     public int updateCalendar(Long id, String author, String todo) {
         return jdbcTemplate.update("UPDATE calendar SET author = ?,todo = ? WHERE id = ?", author, todo, id);
     }
-
+    // 선택한 일정 삭제
+    @Override
+    public int deleteCalendar(Long id) {
+        return jdbcTemplate.update("DELETE FROM calendar WHERE id = ?", id);
+    }
 
 
 }

@@ -81,18 +81,18 @@ public class JdbcTemplateCalendarRepository implements CalendarRepository {
     // 선택 할 일 조회
     @Override
     public Optional<Calendar> findCalendarById(Long id) {
-        List<Calendar> result = jdbcTemplate.query("SELECT * FROM calendar WHERE id = ?", memoRowMapperV2(), id);
+        List<Calendar> result = jdbcTemplate.query("SELECT * FROM calendar WHERE id = ?", calendarRowMapperV2(), id);
         return result.stream().findAny();
     }
 
     @Override
     public Calendar findCalendarByIdOrElseThrow(Long id) {
-        List<Calendar> result = jdbcTemplate.query("SELECT * FROM calendar WHERE id = ?", memoRowMapperV2(), id);
+        List<Calendar> result = jdbcTemplate.query("SELECT * FROM calendar WHERE id = ?", calendarRowMapperV2(), id);
         return result.stream().findAny().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "아이디를 찾을 수 없습니다 id = " + id));
     }
 
 
-    private RowMapper<Calendar> memoRowMapperV2() {
+    private RowMapper<Calendar> calendarRowMapperV2() {
         return new RowMapper<Calendar>() {
             @Override
             public Calendar mapRow(ResultSet rs, int rowNum) throws SQLException {
